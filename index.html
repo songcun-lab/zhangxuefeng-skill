@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>张雪峰志愿填报助手 · 高考2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="基于张雪峰思维框架的高考志愿填报 AI 助手，帮助普通家庭孩子少走弯路。" />
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🎓</span>
+      <span class="logo-text">张雪峰志愿助手</span>
+      <span class="logo-tag">高考2026</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#chat">开始咨询</a>
+      <a href="#how">使用说明</a>
+      <a href="#disclaimer">免责声明</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero 区域 ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      普通家庭的孩子<br/>
+      <span class="highlight">选对比努力更重要</span>
+    </h1>
+    <p class="hero-sub">
+      基于张雪峰5本著作、15+篇深度采访、30+条一手语录构建的志愿填报 AI 顾问<br/>
+      输入你的情况，直接给你判断——不绕弯，不废话
+    </p>
+    <div class="hero-tags">
+      <span>冲/稳/保 三档建议</span>
+      <span>专业 vs 学校 怎么选</span>
+      <span>天坑专业识别</span>
+      <span>就业数据倒推</span>
+    </div>
+    <a href="#chat" class="btn-primary">立即咨询 →</a>
+  </div>
+  <div class="hero-quote">
+    <blockquote>
+      「社会就是个大筛子，你得想办法让自己不被筛掉。」
+      <cite>— 张雪峰</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===== API Key 配置区 ===== -->
+<section class="api-section" id="api-config">
+  <div class="api-inner">
+    <div class="api-notice">
+      <span class="notice-icon">🔑</span>
+      <div>
+        <strong>使用前请先填入 OpenAI API Key</strong>
+        <p>本工具在你的浏览器本地运行，API Key 不会上传到任何服务器。没有 Key？<a href="https://platform.openai.com/api-keys" target="_blank">点此获取</a></p>
+      </div>
+    </div>
+    <div class="api-input-row">
+      <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" />
+      <button id="saveKeyBtn" onclick="saveApiKey()">保存</button>
+    </div>
+    <p class="api-hint" id="apiStatus">尚未配置 API Key</p>
+  </div>
+</section>
+
+<!-- ===== 快捷问题 ===== -->
+<section class="quick-section">
+  <div class="quick-inner">
+    <h3>常见问题快捷入口</h3>
+    <div class="quick-grid">
+      <button class="quick-btn" onclick="quickAsk('我孩子今年高考560分，河南的，想学金融，你怎么看？')">
+        560分河南<br/>想学金融
+      </button>
+      <button class="quick-btn" onclick="quickAsk('我孩子620分，湖北的，理科，不知道选计算机还是电气工程，怎么选？')">
+        620分湖北<br/>计算机 vs 电气
+      </button>
+      <button class="quick-btn" onclick="quickAsk('我孩子500分，山东的，文科，家里没什么背景，应该怎么选专业？')">
+        500分山东<br/>文科怎么选
+      </button>
+      <button class="quick-btn" onclick="quickAsk('AI时代来了，还值得学计算机吗？还是学什么更有前途？')">
+        AI时代<br/>还学计算机吗
+      </button>
+      <button class="quick-btn" onclick="quickAsk('孩子想学医，临床医学值得报吗？读完要多少年？出来能找到工作吗？')">
+        临床医学<br/>值得报吗
+      </button>
+      <button class="quick-btn" onclick="quickAsk('生化环材这四个专业真的是天坑吗？有没有例外？')">
+        生化环材<br/>真的是天坑？
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 主对话区 ===== -->
+<section class="chat-section" id="chat">
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="avatar">
+        <span>雪</span>
+        <span class="avatar-dot"></span>
+      </div>
+      <div class="chat-title-block">
+        <strong>张雪峰 · AI志愿顾问</strong>
+        <span class="chat-subtitle">基于公开言论推断，非本人观点 · 仅供参考</span>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg msg-ai">
+        <div class="msg-bubble">
+          我以张雪峰视角和你聊，基于其公开言论推断，非本人观点。<br/><br/>
+          我跟你说，填志愿这件事，<strong>选对比努力更重要</strong>。你先告诉我：<br/>
+          1️⃣ 孩子多少分？哪个省的？<br/>
+          2️⃣ 文科还是理科？<br/>
+          3️⃣ 家里做什么的？有没有资源？<br/>
+          4️⃣ 想去哪个城市发展？<br/><br/>
+          把这些告诉我，我给你一个明确判断，不废话。
+        </div>
+        <div class="msg-time">张雪峰 AI</div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea
+        id="userInput"
+        placeholder="输入你的问题，比如：孩子560分，河南，理科，想学计算机……"
+        rows="3"
+        onkeydown="handleKeydown(event)"
+      ></textarea>
+      <button id="sendBtn" onclick="sendMessage()">
+        <span id="sendBtnText">发送</span>
+        <span id="sendBtnLoading" style="display:none">⏳</span>
+      </button>
+    </div>
+    <p class="chat-hint">按 Ctrl+Enter 发送 · 回答基于 AI 生成，请结合实际情况判断</p>
+  </div>
+</section>
+
+<!-- ===== 使用说明 ===== -->
+<section class="how-section" id="how">
+  <div class="how-inner">
+    <h2>怎么用效果最好？</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <h4>告诉我具体情况</h4>
+        <p>分数、省份、文理科、家庭背景——这四个信息越具体，建议越准。别只说"我孩子分数不高"，这没法给建议。</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <h4>直接问具体问题</h4>
+        <p>不要问"我应该怎么填志愿"这种大问题。要问"560分河南理科，计算机和电气哪个更好就业"这样具体的。</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <h4>追问到你满意</h4>
+        <p>第一个回答不够？继续追问。"你说的211计算机，具体推荐哪几所？""转行成本有多高？"——一直问到你心里有数。</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">04</div>
+        <h4>结合官方数据验证</h4>
+        <p>AI 给的是方向和框架，具体分数线要去<a href="https://gaokao.chsi.com.cn/" target="_blank">阳光高考</a>核实。两者结合，才是最稳的决策。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 金句墙 ===== -->
+<section class="quotes-section">
+  <div class="quotes-inner">
+    <h2>张雪峰经典判断</h2>
+    <div class="quotes-grid">
+      <div class="quote-card">「金融千万别碰，除非家里是搞金融的。」</div>
+      <div class="quote-card">「理工科选专业，文科选学校。」</div>
+      <div class="quote-card">「你的工资和你的不可替代性成正比。」</div>
+      <div class="quote-card">「生化环材四天王，没读博士别逞强。」</div>
+      <div class="quote-card">「考研不是目的，洗学历才是目的。」</div>
+      <div class="quote-card">「有钱人学艺术叫理想，没钱人学艺术叫赌博。」</div>
+      <div class="quote-card">「先谋生，再谋爱；先站稳，再登高。」</div>
+      <div class="quote-card">「别用战术上的勤奋，掩盖战略上的懒惰。」</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 免责声明 ===== -->
+<section class="disclaimer-section" id="disclaimer">
+  <div class="disclaimer-inner">
+    <h3>⚠️ 重要说明</h3>
+    <ul>
+      <li>本工具基于张雪峰公开言论、著作和采访构建，为 AI 模拟，非张雪峰本人。</li>
+      <li>张雪峰已于 2026 年 3 月 24 日去世，本工具以纪念和传承其教育理念为目的。</li>
+      <li>所有建议仅供参考，具体录取分数线请以各省招生办公室官方数据为准。</li>
+      <li>本工具为公益项目，不收取任何费用，API 费用由使用者自行承担。</li>
+      <li>你的 API Key 仅在本地浏览器中使用，不会上传至任何服务器。</li>
+    </ul>
+    <p class="disclaimer-source">
+      数据来源：<a href="https://github.com/songcun-lab/zhangxuefeng-skill" target="_blank">zhangxuefeng-skill 开源项目</a> ·
+      <a href="https://gaokao.chsi.com.cn/" target="_blank">阳光高考平台</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>张雪峰志愿填报助手 · 公益开源项目</p>
+    <p>
+      <a href="https://github.com/songcun-lab/zhangxuefeng-skill" target="_blank">GitHub 开源地址</a>
+      · 本工具永久免费 · 欢迎转发给有需要的家庭
+    </p>
+  </div>
+</footer>
+
+<script src="skill.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
