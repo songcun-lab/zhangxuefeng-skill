@@ -1,0 +1,9 @@
+{
+  "name": "zhangxuefeng-skill",
+  "version": "1.0.0",
+  "description": "张雪峰志愿填报AI助手 - 公益项目",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>张雪峰志愿填报助手 · 高考2026</title>
   <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="基于张雪峰思维框架的高考志愿填报 AI 助手，帮助普通家庭孩子少走弯路。" />
+  <meta name="description" content="基于张雪峰思维框架的高考志愿填报 AI 助手，帮助普通家庭孩子少走弯路。免费使用，无需注册。" />
+  <!-- 微信/社交分享 Open Graph -->
+  <meta property="og:title" content="张雪峰志愿填报助手 · 高考2026" />
+  <meta property="og:description" content="普通家庭的孩子，选对比努力更重要。免费AI志愿顾问，直接给判断，不废话。" />
+  <meta property="og:type" content="website" />
 </head>
 <body>
 
@@ -34,7 +38,7 @@
     </h1>
     <p class="hero-sub">
       基于张雪峰5本著作、15+篇深度采访、30+条一手语录构建的志愿填报 AI 顾问<br/>
-      输入你的情况，直接给你判断——不绕弯，不废话
+      <strong>免费使用 · 无需注册 · 直接给判断</strong>
     </p>
     <div class="hero-tags">
       <span>冲/稳/保 三档建议</span>
@@ -42,7 +46,7 @@
       <span>天坑专业识别</span>
       <span>就业数据倒推</span>
     </div>
-    <a href="#chat" class="btn-primary">立即咨询 →</a>
+    <a href="#chat" class="btn-primary">立即免费咨询 →</a>
   </div>
   <div class="hero-quote">
     <blockquote>
@@ -52,28 +56,10 @@
   </div>
 </section>
 
-<!-- ===== API Key 配置区 ===== -->
-<section class="api-section" id="api-config">
-  <div class="api-inner">
-    <div class="api-notice">
-      <span class="notice-icon">🔑</span>
-      <div>
-        <strong>使用前请先填入 OpenAI API Key</strong>
-        <p>本工具在你的浏览器本地运行，API Key 不会上传到任何服务器。没有 Key？<a href="https://platform.openai.com/api-keys" target="_blank">点此获取</a></p>
-      </div>
-    </div>
-    <div class="api-input-row">
-      <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" />
-      <button id="saveKeyBtn" onclick="saveApiKey()">保存</button>
-    </div>
-    <p class="api-hint" id="apiStatus">尚未配置 API Key</p>
-  </div>
-</section>
-
 <!-- ===== 快捷问题 ===== -->
 <section class="quick-section">
   <div class="quick-inner">
-    <h3>常见问题快捷入口</h3>
+    <h3>常见问题快捷入口 · 点击直接问</h3>
     <div class="quick-grid">
       <button class="quick-btn" onclick="quickAsk('我孩子今年高考560分，河南的，想学金融，你怎么看？')">
         560分河南<br/>想学金融
@@ -107,7 +93,7 @@
       </div>
       <div class="chat-title-block">
         <strong>张雪峰 · AI志愿顾问</strong>
-        <span class="chat-subtitle">基于公开言论推断，非本人观点 · 仅供参考</span>
+        <span class="chat-subtitle">基于公开言论推断，非本人观点 · 仅供参考 · 免费使用</span>
       </div>
     </div>
 
@@ -138,7 +124,7 @@
         <span id="sendBtnLoading" style="display:none">⏳</span>
       </button>
     </div>
-    <p class="chat-hint">按 Ctrl+Enter 发送 · 回答基于 AI 生成，请结合实际情况判断</p>
+    <p class="chat-hint">按 Ctrl+Enter 发送 · 回答基于 AI 生成，请结合实际情况判断 · 每小时最多咨询20次</p>
   </div>
 </section>
 
@@ -196,8 +182,8 @@
       <li>本工具基于张雪峰公开言论、著作和采访构建，为 AI 模拟，非张雪峰本人。</li>
       <li>张雪峰已于 2026 年 3 月 24 日去世，本工具以纪念和传承其教育理念为目的。</li>
       <li>所有建议仅供参考，具体录取分数线请以各省招生办公室官方数据为准。</li>
-      <li>本工具为公益项目，不收取任何费用，API 费用由使用者自行承担。</li>
-      <li>你的 API Key 仅在本地浏览器中使用，不会上传至任何服务器。</li>
+      <li>本工具为公益项目，完全免费，不收取任何费用。</li>
+      <li>每位用户每小时最多咨询20次，防止滥用。</li>
     </ul>
     <p class="disclaimer-source">
       数据来源：<a href="https://github.com/songcun-lab/zhangxuefeng-skill" target="_blank">zhangxuefeng-skill 开源项目</a> ·
@@ -209,10 +195,10 @@
 <!-- ===== 页脚 ===== -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>张雪峰志愿填报助手 · 公益开源项目</p>
+    <p>张雪峰志愿填报助手 · 公益开源项目 · 完全免费</p>
     <p>
       <a href="https://github.com/songcun-lab/zhangxuefeng-skill" target="_blank">GitHub 开源地址</a>
-      · 本工具永久免费 · 欢迎转发给有需要的家庭
+      · 欢迎转发给有需要的家庭
     </p>
   </div>
 </footer>
